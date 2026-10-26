@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ite_edu_platform_db
+    username: postgres
+    password: fdsa
+    driver-class-name: org.postgresql.Driver
+  application:
+    name: edu-platform
+
+server:
+  port: 8081

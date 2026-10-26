@@ -1,0 +1,14 @@
+plugins {
+    id 'java-common-conventions'
+}
+
+group = 'kh.edu.istad'
+version = '1.0.0'
+
+dependencies {
+    api('kh.edu.istad.common:istad-common-domain')
+}
+
+test {
+    useJUnitPlatform()
+}

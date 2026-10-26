@@ -1,0 +1,16 @@
+plugins {
+    id 'spring-common-conventions'
+}
+
+group = 'kh.edu.istad'
+version = '1.0.0'
+
+dependencies {
+    api('kh.edu.istad:customer-domain-core')
+//    implementation 'io.projectreactor:reactor-core'
+
+}
+
+test {
+    useJUnitPlatform()
+}
