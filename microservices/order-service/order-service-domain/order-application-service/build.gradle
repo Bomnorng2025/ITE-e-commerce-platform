@@ -6,5 +6,6 @@ group = 'kh.edu.istad'
 version = '1.0.0'
 
 dependencies {
+    api 'io.projectreactor:reactor-core'
     api('kh.edu.istad:order-domain-core')
 }

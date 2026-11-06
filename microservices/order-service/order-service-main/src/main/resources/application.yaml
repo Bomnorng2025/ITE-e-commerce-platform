@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: dev
+  config:
+    import:
+      - "optional:consul:"
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ite_edu_platform_db
+    username: postgres
+    password: fdsa
+    driver-class-name: org.postgresql.Driver
+
+  cloud:
+    consul:
+      config:
+        enabled: true
+        format: yaml
+        watch:
+          enabled: true
+        fail-fast: false
+      discovery:
+        health-check-url: "http://host.docker.internal:${server.port}/actuator/health"
+        prefer-ip-address: true
+        service-name: ${spring.application.name}
+        instance-id: ${spring.application.name}-${random.value}
+
+server:
+  port: 9092
+  http:
+    serviceclient:
+      customer-service:
+        base-url: http://customer-service
+      business-service:
+        base-url: http://business-service

@@ -1,0 +1,12 @@
+version: v2
+modules:
+  - path: ./src/main/java/proto
+    name: buf.build/istad-platform/istad-palform-grpc
+
+lint:
+  use:
+    - STANDARD
+
+breaking:
+  use:
+    - FILE

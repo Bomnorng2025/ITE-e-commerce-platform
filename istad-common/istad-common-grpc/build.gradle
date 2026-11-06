@@ -1,0 +1,40 @@
+plugins {
+    id 'java-common-conventions'
+}
+
+group = 'kh.edu.istad.common'
+version = '1.0.0'
+
+def grpcVersion = '1.85.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    api "io.grpc:grpc-protobuf:${grpcVersion}"
+    api "io.grpc:grpc-stub:${grpcVersion}"
+
+    compileOnly 'javax.annotation:javax.annotation-api:1.3.2'
+
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir layout.buildDirectory.dir(
+                    'generated/sources/buf/main/java'
+            )
+        }
+    }
+}
+
+tasks.register('bufGenerate', Exec) {
+    workingDir rootProject.projectDir
+    commandLine 'buf', 'generate'
+}
+
+tasks.named('compileJava') {
+    dependsOn tasks.named('bufGenerate')
+}

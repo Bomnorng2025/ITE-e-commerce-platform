@@ -11,6 +11,14 @@ dependencyResolutionManagement {
     repositories {
         mavenCentral()
     }
+
+    versionCatalogs {
+        libs {
+            from(
+                    files("../../gradle/libs.versions.toml")
+            )
+        }
+    }
 }
 
 rootProject.name = 'order-service'
@@ -21,3 +29,4 @@ include 'order-service-domain:order-application-service'
 include 'order-service-domain'
 include 'order-service-restapi'
 include 'order-service-persistence'
+include 'order-service-client'
